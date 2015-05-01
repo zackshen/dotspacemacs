@@ -1,7 +1,7 @@
 # dotspacemacs
 
 ## Install Guide
-first you need install emacs>=24
+first you need install emacs>=24.3
 
 second step clone the spacemacs configuration
 
