@@ -145,6 +145,8 @@ before layers configuration."
  This function is called at the very end of Spacemacs initialization after
 layers configuration."
   (setq powerline-default-separator 'nil)
+  (setq undo-tree-auto-save-history 't)
+  (setq undo-tree-load-history 't)
   (add-hook 'prog-mode-hook 'linum-mode)
 )
 
