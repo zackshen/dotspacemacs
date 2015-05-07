@@ -24,6 +24,7 @@
      markdown
      syntax-checking
      themes-megapack
+     ;; languages
      python
      go
      html
@@ -54,18 +55,18 @@ before layers configuration."
    ;; directory. A string value must be a path to a .PNG file.
    ;; If the value is nil then no banner is displayed.
    ;; dotspacemacs-startup-banner 'official
-   dotspacemacs-startup-banner 'random
+   dotspacemacs-startup-banner nil
    ;; t if you always want to see the changelog at startup
-   dotspacemacs-always-show-changelog t
+   dotspacemacs-always-show-changelog nil
    ;; List of items to show in the startup buffer. If nil it is disabled.
    ;; Possible values are: `recents' `bookmarks' `projects'."
-   dotspacemacs-startup-lists '(recents projects)
+   dotspacemacs-startup-lists '(projects)
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(zenburn
+   dotspacemacs-themes '(monokai
                          wombat
-                         monokai
+                         zenburn
                          solarized-light
                          leuven
                          monokai
@@ -122,7 +123,7 @@ before layers configuration."
    ;; Transparency can be toggled through `toggle-transparency'.
    dotspacemacs-inactive-transparency 90
    ;; If non nil unicode symbols are displayed in the mode line.
-   dotspacemacs-mode-line-unicode-symbols t
+   dotspacemacs-mode-line-unicode-symbols nil
    ;; If non nil smooth scrolling (native-scrolling) is enabled. Smooth
    ;; scrolling overrides the default behavior of Emacs which recenters the
    ;; point when it reaches the top or bottom of the screen.
@@ -140,6 +141,8 @@ before layers configuration."
    dotspacemacs-default-package-repository nil
    )
   ;; User initialization goes here
+  (setq-default
+    evil-toggle-key "C-`")
   )
 
 (defun dotspacemacs/config ()
@@ -150,6 +153,9 @@ layers configuration."
   (setq undo-tree-auto-save-history 't)
   (setq undo-tree-load-history 't)
   (add-hook 'prog-mode-hook 'linum-mode)
+  (setq-default
+    flycheck-display-errors-function 'nil
+   )
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
