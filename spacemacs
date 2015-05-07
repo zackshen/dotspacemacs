@@ -142,7 +142,8 @@ before layers configuration."
    )
   ;; User initialization goes here
   (setq-default
-    evil-toggle-key "C-`")
+   evil-toggle-key "C-`"
+   )
   )
 
 (defun dotspacemacs/config ()
@@ -155,6 +156,7 @@ layers configuration."
   (add-hook 'prog-mode-hook 'linum-mode)
   (setq-default
     flycheck-display-errors-function 'nil
+    truncate-lines t
    )
 )
 
