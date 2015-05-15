@@ -64,8 +64,8 @@ before layers configuration."
    ;; List of themes, the first of the list is loaded when spacemacs starts.
    ;; Press <SPC> T n to cycle to the next theme in the list (works great
    ;; with 2 themes variants, one dark and one light)
-   dotspacemacs-themes '(monokai
-                         wombat
+   dotspacemacs-themes '(wombat
+                         monokai
                          zenburn
                          solarized-light
                          leuven
@@ -150,6 +150,7 @@ before layers configuration."
   "Configuration function.
  This function is called at the very end of Spacemacs initialization after
 layers configuration."
+  (setq linum-format "%4d ")
   (setq powerline-default-separator 'nil)
   (setq undo-tree-auto-save-history 't)
   (setq undo-tree-load-history 't)
