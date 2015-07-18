@@ -6,7 +6,6 @@
   "Configuration Layers declaration."
   (setq-default
    ;; List of additional paths where to look for configuration layers.
-   ;; Paths must have a trailing slash (i.e. `~/.mycontribs/')
    dotspacemacs-configuration-layer-path '()
    ;; List of configuration layers to load. If it is the symbol `all' instead
    ;; of a list then all discovered layers will be installed.
@@ -28,6 +27,7 @@
      python
      go
      html
+     rcirc
      javascript
      (syntax-checking :variables syntax-checking-enable-tooltips nil)
      (shell :variables
@@ -203,6 +203,19 @@ layers configuration."
   ;; store email in ~/gmail directory
   (setq nnml-directory "~/Mail/gmail")
   (setq message-directory "~/Mail/gmail")
+  
+
+    ;; IRC
+    (setq rcirc-server-alist
+        '(("$project.irc.slack.com"
+               :port 6697
+               :nick "$nick" 
+               :nickserv "$nickserv"
+               :password "$password"
+               :user-name "$username"
+               :full-name "$fullnamed "
+               :encryption tls
+               :channels ("#general"))))
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
