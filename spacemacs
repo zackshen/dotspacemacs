@@ -170,6 +170,7 @@ before layers configuration."
   "Configuration function.
  This function is called at the very end of Spacemacs initialization after
 layers configuration."
+  (setq-default truncate-lines 't)
   (setq ad-redefinition-action 'accept)
   (setq linum-format "%4d ")
   (setq powerline-default-separator 'nil)
