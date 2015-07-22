@@ -170,6 +170,12 @@ before layers configuration."
   "Configuration function.
  This function is called at the very end of Spacemacs initialization after
 layers configuration."
+
+  ;; prevent emacs auto change working directory
+  (add-hook 'find-file-hook
+    (lambda ()
+      (setq default-directory command-line-default-directory)))
+
   (setq-default truncate-lines 't)
   (setq ad-redefinition-action 'accept)
   (setq linum-format "%4d ")
