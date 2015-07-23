@@ -20,7 +20,6 @@
      emacs-lisp
      auto-completion
      git
-     org
      gnus
      markdown
      themes-megapack
@@ -28,6 +27,7 @@
      go
      html
      rcirc
+     (org :variables org-enable-github-support t)
      javascript
      (syntax-checking :variables syntax-checking-enable-tooltips nil)
      (shell :variables
@@ -223,6 +223,37 @@ layers configuration."
                :full-name "$fullnamed "
                :encryption tls
                :channels ("#general"))))
+
+    ;; github
+    (setq org-publish-project-alist
+          '(
+                ("blog-notes"
+                 :base-directory "~/org/notes"
+                 :base-extension "org"
+                 :publishing-directory "~/org/public_html/"
+                 :recursive t
+                 :publishing-function org-html-publish-to-html
+                 :headline-levels 4             ; Just the default for this project.
+                 :auto-preamble t
+                 :section-numbers nil
+                 :author "Zack"
+                 :email "zackshen0526@gmail.com"
+                 :auto-sitemap t                ; Generate sitemap.org automagically...
+                 :sitemap-filename "sitemap.org"  ; ... call it sitemap.org (it's the default)...
+                 :sitemap-title "Sitemap"         ; ... with title 'Sitemap'.
+                 :sitemap-sort-files anti-chronologically
+                 :sitemap-file-entry-format "%d %t"
+                 :html-head "<link rel='stylesheet' type='text/css' href='/css/worg.css'/>"
+                  )
+                ("blog-static"
+                 :base-directory "~/org/notes"
+                 :base-extension "css\\|js\\|png\\|jpg\\|gif\\|pdf\\|mp3\\|ogg\\|swf"
+                 :publishing-directory "~/org/public_html/"
+                 :recursive t
+                 :publishing-function org-publish-attachment
+                  )
+                ("blog" :components ("blog-notes" "blog-static"))
+        ))
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
