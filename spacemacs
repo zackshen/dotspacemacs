@@ -53,7 +53,6 @@ This function is called at the very startup of Spacemacs initialization
 before layers configuration."
   ;; This setq-default sexp is an exhaustive list of all the supported
   ;; spacemacs settings.
-  (setq-default evil-escape-key-sequence "kj")
   (setq-default
    ;; Either `vim' or `emacs'. Evil is always enabled but if the variable
    ;; is `emacs' then the `holy-mode' is enabled at startup.
@@ -176,6 +175,10 @@ layers configuration."
     (lambda ()
       (setq default-directory command-line-default-directory)))
 
+  ;; i hate the header-line-input.
+  (setq helm-echo-input-in-header-line nil)
+  (remove-hook 'helm-minibuffer-set-up-hook 'helm-hide-minibuffer-maybe)
+
   (setq-default truncate-lines 't)
   (setq ad-redefinition-action 'accept)
   (setq linum-format "%4d ")
@@ -212,48 +215,48 @@ layers configuration."
   (setq message-directory "~/Mail/gmail")
   
 
-    ;; IRC
-    (setq rcirc-server-alist
-        '(("$project.irc.slack.com"
-               :port 6697
-               :nick "$nick" 
-               :nickserv "$nickserv"
-               :password "$password"
-               :user-name "$username"
-               :full-name "$fullnamed "
-               :encryption tls
-               :channels ("#general"))))
+  ;; IRC
+  (setq rcirc-server-alist
+      '(("$project.irc.slack.com"
+             :port 6697
+             :nick "$nick" 
+             :nickserv "$nickserv"
+             :password "$password"
+             :user-name "$username"
+             :full-name "$fullnamed "
+             :encryption tls
+             :channels ("#general"))))
 
-    ;; github
-    (setq org-publish-project-alist
-          '(
-                ("blog-notes"
-                 :base-directory "~/org/notes"
-                 :base-extension "org"
-                 :publishing-directory "~/org/public_html/"
-                 :recursive t
-                 :publishing-function org-html-publish-to-html
-                 :headline-levels 4             ; Just the default for this project.
-                 :auto-preamble t
-                 :section-numbers nil
-                 :author "Zack"
-                 :email "zackshen0526@gmail.com"
-                 :auto-sitemap t                ; Generate sitemap.org automagically...
-                 :sitemap-filename "sitemap.org"  ; ... call it sitemap.org (it's the default)...
-                 :sitemap-title "Sitemap"         ; ... with title 'Sitemap'.
-                 :sitemap-sort-files anti-chronologically
-                 :sitemap-file-entry-format "%d %t"
-                 :html-head "<link rel='stylesheet' type='text/css' href='/css/worg.css'/>"
-                  )
-                ("blog-static"
-                 :base-directory "~/org/notes"
-                 :base-extension "css\\|js\\|png\\|jpg\\|gif\\|pdf\\|mp3\\|ogg\\|swf"
-                 :publishing-directory "~/org/public_html/"
-                 :recursive t
-                 :publishing-function org-publish-attachment
-                  )
-                ("blog" :components ("blog-notes" "blog-static"))
-        ))
+  ;; github
+  (setq org-publish-project-alist
+        '(
+              ("blog-notes"
+               :base-directory "~/org/notes"
+               :base-extension "org"
+               :publishing-directory "~/org/public_html/"
+               :recursive t
+               :publishing-function org-html-publish-to-html
+               :headline-levels 4             ; Just the default for this project.
+               :auto-preamble t
+               :section-numbers nil
+               :author "Zack"
+               :email "zackshen0526@gmail.com"
+               :auto-sitemap t                ; Generate sitemap.org automagically...
+               :sitemap-filename "sitemap.org"  ; ... call it sitemap.org (it's the default)...
+               :sitemap-title "Sitemap"         ; ... with title 'Sitemap'.
+               :sitemap-sort-files anti-chronologically
+               :sitemap-file-entry-format "%d %t"
+               :html-head "<link rel='stylesheet' type='text/css' href='/css/worg.css'/>"
+                )
+              ("blog-static"
+               :base-directory "~/org/notes"
+               :base-extension "css\\|js\\|png\\|jpg\\|gif\\|pdf\\|mp3\\|ogg\\|swf"
+               :publishing-directory "~/org/public_html/"
+               :recursive t
+               :publishing-function org-publish-attachment
+                )
+              ("blog" :components ("blog-notes" "blog-static"))
+      ))
 )
 
 ;; Do not write anything past this comment. This is where Emacs will
