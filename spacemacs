@@ -41,7 +41,7 @@
    ;; configuration in `dotspacemacs/config'.
    dotspacemacs-additional-packages '()
    ;; A list of packages and/or extensions that will not be install and loaded.
-   dotspacemacs-excluded-packages '()
+   dotspacemacs-excluded-packages '(yasnappit)
    ;; If non-nil spacemacs will delete any orphan packages, i.e. packages that
    ;; are declared in a layer which is not a member of
    ;; the list `dotspacemacs-configuration-layers'
@@ -178,14 +178,18 @@ layers configuration."
   ;; i hate the header-line-input.
   (setq helm-echo-input-in-header-line nil)
   (remove-hook 'helm-minibuffer-set-up-hook 'helm-hide-minibuffer-maybe)
+  (setq helm-boring-file-regexp-list '("\\.pyc$"))
 
   (setq-default truncate-lines 't)
   (setq ad-redefinition-action 'accept)
-  (setq linum-format "%4d ")
   (setq powerline-default-separator 'nil)
   (setq undo-tree-auto-save-history 't)
   (setq undo-tree-load-history 't)
-  (add-hook 'prog-mode-hook 'linum-mode)
+  (global-linum-mode)
+  (setq linum-format "%4d ")
+
+  ;; org-mode
+  (setq org-bullets-bullet-list '("■" "◆" "▲" "▶"))
 
   ;; Get email, and store in nnml
   (setq gnus-secondary-select-methods
