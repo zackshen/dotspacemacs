@@ -214,7 +214,9 @@ layers configuration. You are free to put any user code."
     (require 'ox-reveal)
     (setq org-reveal-root "file:///~/Documents/gitrepos/reveal.js")
     (setq org-reveal-hlevel 1)
-    (setq org-agenda-files (list "~/org/todo.org"))
+
+    ;; agenda
+    (setq org-agenda-files (list "~/agenda/work.org"))
 
     ;; blog
     (require 'ox-publish)
