@@ -29,12 +29,14 @@ values."
      auto-completion
      (syntax-checking :variables syntax-checking-enable-tooltips nil)
      javascript
+     python
      html
      git
      markdown
      org
      erc
      yasnippet
+     restclient
      )
    ;; List of additional packages that will be installed without being
    ;; wrapped in a layer. If you need some configuration for these
@@ -191,6 +193,7 @@ values."
   "Initialization function for user code.
 It is called immediately after `dotspacemacs/init'.  You are free to put any
 user code."
+    (setq-default evil-toggle-key "C-`")
   )
 
 (defun dotspacemacs/user-config ()
